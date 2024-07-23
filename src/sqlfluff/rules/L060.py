@@ -38,7 +38,7 @@ class Rule_L060(BaseRule):
     """
 
     def _eval(self, context: RuleContext) -> Optional[LintResult]:
-        """Use ``COALESCE`` instead of ``IFNULL`` or ``NVL``."""
+        """Use ``COALESCE`` instead of the function used."""
         # We only care about function names.
         if context.segment.name != "function_name_identifier":
             return None
@@ -59,4 +59,4 @@ class Rule_L060(BaseRule):
             ],
         )
 
-        return LintResult(context.segment, [fix])
+        return LintResult(context.segment, [fix], description=f"Use 'COALESCE' instead of '{context.segment.raw_upper}'.")
