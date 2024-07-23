@@ -1,0 +1,48 @@
+# YML test files are auto-generated from SQL files and should not be edited by
+# hand. To help enforce this, the "hash" field in the file must match a hash
+# computed by SQLFluff when running the tests. Please run
+# `python test/generate_parse_fixture_yml.py`  to generate them after adding or
+# altering SQL files.
+_hash: b447cc55b4535f32f5a4312c0f61d92d27c203a8159c6518bfa6660b9049c03c
+file:
+- statement:
+    collect_statistics_statement:
+    - keyword: COLLECT
+    - keyword: STATISTICS
+    - keyword: COLUMN
+    - bracketed:
+        start_bracket: (
+        column_reference:
+          identifier: IND_TIPO_TARJETA
+        end_bracket: )
+    - keyword: 'ON'
+    - table_reference:
+      - identifier: DB_1
+      - dot: .
+      - identifier: TABLE_1
+- statement_terminator: ;
+- statement:
+    collect_statistics_statement:
+    - keyword: COLLECT
+    - keyword: STATISTICS
+    - keyword: INDEX
+    - bracketed:
+      - start_bracket: (
+      - column_reference:
+          identifier: COD_TARJETA
+      - comma: ','
+      - column_reference:
+          identifier: COD_EST
+      - comma: ','
+      - column_reference:
+          identifier: IND_TIPO_TARJETA
+      - comma: ','
+      - column_reference:
+          identifier: FEC_ANIO_MES
+      - end_bracket: )
+    - keyword: 'ON'
+    - table_reference:
+      - identifier: DB_1
+      - dot: .
+      - identifier: TABLE_1
+- statement_terminator: ;

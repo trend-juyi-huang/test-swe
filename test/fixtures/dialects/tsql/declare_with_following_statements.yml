@@ -1,0 +1,135 @@
+# YML test files are auto-generated from SQL files and should not be edited by
+# hand. To help enforce this, the "hash" field in the file must match a hash
+# computed by SQLFluff when running the tests. Please run
+# `python test/generate_parse_fixture_yml.py`  to generate them after adding or
+# altering SQL files.
+_hash: 3d6b0be21f77edc5e4ad35275af45c638fc67054a629f4a48c085c89012dda99
+file:
+  batch:
+    create_procedure_statement:
+    - keyword: CREATE
+    - keyword: PROC
+    - object_reference:
+      - identifier: Reporting
+      - dot: .
+      - identifier: DeclareProblem
+    - keyword: AS
+    - procedure_statement:
+        statement:
+          begin_end_block:
+          - keyword: BEGIN
+          - statement:
+              declare_segment:
+              - keyword: DECLARE
+              - parameter: '@startdate'
+              - keyword: AS
+              - data_type:
+                  identifier: DATE
+              - statement_terminator: ;
+          - statement:
+              declare_segment:
+                keyword: DECLARE
+                parameter: '@DateNow'
+                data_type:
+                  identifier: DATE
+                comparison_operator:
+                  raw_comparison_operator: '='
+                expression:
+                  function:
+                    function_name:
+                      function_name_identifier: GETDATE
+                    bracketed:
+                      start_bracket: (
+                      end_bracket: )
+                statement_terminator: ;
+          - statement:
+              declare_segment:
+              - keyword: DECLARE
+              - parameter: '@DateStart'
+              - data_type:
+                  identifier: DATETIME2
+              - comparison_operator:
+                  raw_comparison_operator: '='
+              - expression:
+                  function:
+                    function_name:
+                      function_name_identifier: GETDATE
+                    bracketed:
+                      start_bracket: (
+                      end_bracket: )
+              - comma: ','
+              - parameter: '@DateEnd'
+              - data_type:
+                  identifier: DATETIME2
+              - comparison_operator:
+                  raw_comparison_operator: '='
+              - expression:
+                  function:
+                    function_name:
+                      function_name_identifier: GETDATE
+                    bracketed:
+                      start_bracket: (
+                      end_bracket: )
+          - statement:
+              declare_segment:
+                keyword: DECLARE
+                parameter: '@EOMONTH'
+                data_type:
+                  identifier: DATE
+                comparison_operator:
+                  raw_comparison_operator: '='
+                expression:
+                  bracketed:
+                    start_bracket: (
+                    expression:
+                      literal: "'1900-01-01'"
+                    end_bracket: )
+          - statement:
+              set_segment:
+                keyword: SET
+                parameter: '@EOMONTH'
+                comparison_operator:
+                  raw_comparison_operator: '='
+                expression:
+                  bracketed:
+                    start_bracket: (
+                    expression:
+                      literal: "'2000-01-01'"
+                    end_bracket: )
+          - statement:
+              set_segment:
+                keyword: SET
+                parameter: '@EOMONTH'
+                comparison_operator:
+                  raw_comparison_operator: '='
+                expression:
+                  bracketed:
+                    start_bracket: (
+                    expression:
+                      literal: "'2001-01-01'"
+                    end_bracket: )
+                statement_terminator: ;
+          - statement:
+              if_then_statement:
+                if_clause:
+                  keyword: IF
+                  expression:
+                  - function:
+                      function_name:
+                        function_name_identifier: OBJECT_ID
+                      bracketed:
+                        start_bracket: (
+                        expression:
+                          literal: "'tempdb..#UP'"
+                        end_bracket: )
+                  - keyword: IS
+                  - keyword: NOT
+                  - keyword: 'NULL'
+                statement:
+                  drop_table_statement:
+                  - keyword: DROP
+                  - keyword: TABLE
+                  - table_reference:
+                      identifier: '#UP'
+                  - statement_terminator: ;
+          - keyword: END

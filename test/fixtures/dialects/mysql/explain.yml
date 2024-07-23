@@ -1,0 +1,82 @@
+# YML test files are auto-generated from SQL files and should not be edited by
+# hand. To help enforce this, the "hash" field in the file must match a hash
+# computed by SQLFluff when running the tests. Please run
+# `python test/generate_parse_fixture_yml.py`  to generate them after adding or
+# altering SQL files.
+_hash: f1123ba92238255109ac18836c985c2b661eda53bdde1e20c955d1c4d2c4d1e5
+file:
+- statement:
+    explain_statement:
+      keyword: explain
+      select_statement:
+        select_clause:
+          keyword: select
+          select_clause_element:
+            literal: '1'
+- statement_terminator: ;
+- statement:
+    explain_statement:
+      keyword: explain
+      update_statement:
+        keyword: update
+        table_reference:
+          identifier: tbl
+        set_clause_list:
+          keyword: set
+          set_clause:
+            column_reference:
+              identifier: foo
+            comparison_operator:
+              raw_comparison_operator: '='
+            literal: '1'
+        where_clause:
+          keyword: where
+          expression:
+            column_reference:
+              identifier: bar
+            comparison_operator:
+              raw_comparison_operator: '='
+            literal: '2'
+- statement_terminator: ;
+- statement:
+    explain_statement:
+      keyword: explain
+      delete_statement:
+        keyword: delete
+        from_clause:
+          keyword: from
+          from_expression:
+            from_expression_element:
+              table_expression:
+                table_reference:
+                  identifier: tbl
+        where_clause:
+          keyword: where
+          expression:
+            column_reference:
+              identifier: foo
+            comparison_operator:
+              raw_comparison_operator: '='
+            literal: '1'
+- statement_terminator: ;
+- statement:
+    explain_statement:
+      keyword: explain
+      insert_statement:
+      - keyword: insert
+      - keyword: into
+      - table_reference:
+          identifier: tbl
+      - bracketed:
+          start_bracket: (
+          column_reference:
+            identifier: col1
+          end_bracket: )
+      - values_clause:
+          keyword: values
+          bracketed:
+            start_bracket: (
+            expression:
+              literal: '123'
+            end_bracket: )
+- statement_terminator: ;

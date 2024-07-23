@@ -1,0 +1,63 @@
+# YML test files are auto-generated from SQL files and should not be edited by
+# hand. To help enforce this, the "hash" field in the file must match a hash
+# computed by SQLFluff when running the tests. Please run
+# `python test/generate_parse_fixture_yml.py`  to generate them after adding or
+# altering SQL files.
+_hash: 6670d8c469d2bc7b84b0e9ee89026706879b67416462305ae59412e51e70390f
+file:
+- statement:
+    drop_trigger_statement:
+    - keyword: DROP
+    - keyword: TRIGGER
+    - trigger_reference:
+        identifier: foo
+    - keyword: 'ON'
+    - table_reference:
+        identifier: bar
+- statement_terminator: ;
+- statement:
+    drop_trigger_statement:
+    - keyword: DROP
+    - keyword: TRIGGER
+    - keyword: IF
+    - keyword: EXISTS
+    - trigger_reference:
+        identifier: foo
+    - keyword: 'ON'
+    - table_reference:
+        identifier: bar
+- statement_terminator: ;
+- statement:
+    drop_trigger_statement:
+    - keyword: DROP
+    - keyword: TRIGGER
+    - trigger_reference:
+        identifier: foo
+    - keyword: 'ON'
+    - table_reference:
+        identifier: bar
+    - keyword: CASCADE
+- statement_terminator: ;
+- statement:
+    drop_trigger_statement:
+    - keyword: DROP
+    - keyword: TRIGGER
+    - keyword: IF
+    - keyword: EXISTS
+    - trigger_reference:
+        identifier: foo
+    - keyword: 'ON'
+    - table_reference:
+        identifier: bar
+    - keyword: RESTRICT
+- statement_terminator: ;
+- statement:
+    drop_trigger_statement:
+    - keyword: DROP
+    - keyword: TRIGGER
+    - trigger_reference:
+        identifier: if_dist_exists
+    - keyword: 'ON'
+    - table_reference:
+        identifier: films
+- statement_terminator: ;

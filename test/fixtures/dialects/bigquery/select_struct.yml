@@ -1,0 +1,138 @@
+# YML test files are auto-generated from SQL files and should not be edited by
+# hand. To help enforce this, the "hash" field in the file must match a hash
+# computed by SQLFluff when running the tests. Please run
+# `python test/generate_parse_fixture_yml.py`  to generate them after adding or
+# altering SQL files.
+_hash: 958734aacebc6a6c2e7883beca9c39f2491fbbbc1d121987c1fddc014306e7cc
+file:
+- statement:
+    select_statement:
+      select_clause:
+      - keyword: select
+      - select_clause_element:
+          column_reference:
+          - identifier: some_table
+          - dot: .
+          - identifier: foo_id
+      - comma: ','
+      - select_clause_element:
+          function:
+            function_name:
+              function_name_identifier: array
+            bracketed:
+              start_bracket: (
+              expression:
+                select_statement:
+                  select_clause:
+                    keyword: select
+                    select_clause_modifier:
+                    - keyword: as
+                    - keyword: struct
+                    select_clause_element:
+                      wildcard_expression:
+                        wildcard_identifier:
+                          star: '*'
+                  from_clause:
+                    keyword: from
+                    from_expression:
+                      from_expression_element:
+                        table_expression:
+                          table_reference:
+                            identifier: another_table
+                  where_clause:
+                    keyword: where
+                    expression:
+                    - column_reference:
+                      - identifier: another_table
+                      - dot: .
+                      - identifier: foo_id
+                    - comparison_operator:
+                        raw_comparison_operator: '='
+                    - column_reference:
+                      - identifier: some_table
+                      - dot: .
+                      - identifier: foo_id
+              end_bracket: )
+      from_clause:
+        keyword: from
+        from_expression:
+          from_expression_element:
+            table_expression:
+              table_reference:
+                identifier: another_table
+- statement_terminator: ;
+- statement:
+    select_statement:
+      select_clause:
+      - keyword: select
+      - select_clause_modifier:
+        - keyword: as
+        - keyword: struct
+      - select_clause_element:
+          literal: "'1'"
+          alias_expression:
+            keyword: as
+            identifier: bb
+      - comma: ','
+      - select_clause_element:
+          literal: '2'
+          alias_expression:
+            keyword: as
+            identifier: aa
+- statement_terminator: ;
+- statement:
+    select_statement:
+      select_clause:
+        keyword: select
+        select_clause_element:
+          typeless_struct:
+            keyword: struct
+            bracketed:
+            - start_bracket: (
+            - column_reference:
+              - identifier: bar
+              - dot: .
+              - identifier: bar_id
+            - alias_expression:
+                keyword: as
+                identifier: id
+            - comma: ','
+            - column_reference:
+              - identifier: bar
+              - dot: .
+              - identifier: bar_name
+            - alias_expression:
+                keyword: as
+                identifier: bar
+            - end_bracket: )
+          alias_expression:
+            keyword: as
+            identifier: bar
+      from_clause:
+        keyword: from
+        from_expression:
+          from_expression_element:
+            table_expression:
+              table_reference:
+                identifier: foo
+          join_clause:
+          - keyword: left
+          - keyword: join
+          - from_expression_element:
+              table_expression:
+                table_reference:
+                  identifier: bar
+          - join_on_condition:
+              keyword: 'on'
+              expression:
+              - column_reference:
+                - identifier: bar
+                - dot: .
+                - identifier: foo_id
+              - comparison_operator:
+                  raw_comparison_operator: '='
+              - column_reference:
+                - identifier: foo
+                - dot: .
+                - identifier: foo_id
+- statement_terminator: ;

@@ -1,0 +1,27 @@
+# Install with -U to keep all requirements up-to-date
+# code linting and formatting
+flake8
+flake8-docstrings
+flake8-black
+# documentation checks
+doc8
+Pygments
+# testing
+coverage
+hypothesis
+pytest
+pytest-cov
+pytest-sugar
+pytest-xdist
+# MyPy
+mypy
+types-toml
+types-pkg_resources
+types-chardet
+types-appdirs
+types-colorama
+types-pyyaml
+types-regex
+# Requests is required for the util script
+requests
+yamllint

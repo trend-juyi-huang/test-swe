@@ -1,0 +1,156 @@
+# YML test files are auto-generated from SQL files and should not be edited by
+# hand. To help enforce this, the "hash" field in the file must match a hash
+# computed by SQLFluff when running the tests. Please run
+# `python test/generate_parse_fixture_yml.py`  to generate them after adding or
+# altering SQL files.
+_hash: db26b93d572fe6a6c16cf46d5b4ceec8c7d22b40caec0db28211a2e841261171
+file:
+  batch:
+  - statement:
+      select_statement:
+        select_clause:
+        - keyword: SELECT
+        - select_clause_element:
+            function:
+              function_name:
+                keyword: string_agg
+              bracketed:
+              - start_bracket: (
+              - expression:
+                  column_reference:
+                  - identifier: t
+                  - dot: .
+                  - identifier: v
+              - comma: ','
+              - expression:
+                  literal: "'; '"
+              - end_bracket: )
+              within_group_clause:
+              - keyword: within
+              - keyword: group
+              - bracketed:
+                  start_bracket: (
+                  orderby_clause:
+                  - keyword: order
+                  - keyword: by
+                  - column_reference:
+                      identifier: v
+                  end_bracket: )
+            alias_expression:
+              keyword: as
+              identifier: column_name1
+        - comma: ','
+        - select_clause_element:
+            function:
+              function_name:
+                keyword: PERCENTILE_CONT
+              bracketed:
+                start_bracket: (
+                expression:
+                  literal: '0.5'
+                end_bracket: )
+              within_group_clause:
+              - keyword: WITHIN
+              - keyword: GROUP
+              - bracketed:
+                  start_bracket: (
+                  orderby_clause:
+                  - keyword: ORDER
+                  - keyword: BY
+                  - column_reference:
+                    - identifier: t
+                    - dot: .
+                    - identifier: Rate
+                  end_bracket: )
+              - keyword: OVER
+              - bracketed:
+                  start_bracket: (
+                  partitionby_clause:
+                  - keyword: PARTITION
+                  - keyword: BY
+                  - column_reference:
+                      identifier: Name
+                  end_bracket: )
+            alias_expression:
+              keyword: AS
+              identifier: MedianCont
+        - comma: ','
+        - select_clause_element:
+            function:
+              function_name:
+                keyword: PERCENTILE_DISC
+              bracketed:
+                start_bracket: (
+                expression:
+                  literal: '0.5'
+                end_bracket: )
+              within_group_clause:
+              - keyword: WITHIN
+              - keyword: GROUP
+              - bracketed:
+                  start_bracket: (
+                  orderby_clause:
+                  - keyword: ORDER
+                  - keyword: BY
+                  - column_reference:
+                    - identifier: t
+                    - dot: .
+                    - identifier: Rate
+                  end_bracket: )
+              - keyword: OVER
+              - bracketed:
+                  start_bracket: (
+                  partitionby_clause:
+                  - keyword: PARTITION
+                  - keyword: BY
+                  - column_reference:
+                      identifier: Name
+                  end_bracket: )
+            alias_expression:
+              keyword: AS
+              identifier: MedianDisc
+        from_clause:
+          keyword: from
+          from_expression:
+            from_expression_element:
+              table_expression:
+                table_reference:
+                  identifier: table1
+              alias_expression:
+                identifier: t
+        groupby_clause:
+        - keyword: group
+        - keyword: by
+        - column_reference:
+            identifier: employee_id
+        having_clause:
+          keyword: HAVING
+          expression:
+          - function:
+              function_name:
+                function_name_identifier: MIN
+              bracketed:
+                start_bracket: (
+                expression:
+                  column_reference:
+                    identifier: '[ArrivalDt]'
+                end_bracket: )
+          - comparison_operator:
+            - raw_comparison_operator: <
+            - raw_comparison_operator: '='
+          - function:
+              function_name:
+                function_name_identifier: MAX
+              bracketed:
+                start_bracket: (
+                expression:
+                  column_reference:
+                    identifier: '[DischargeDt]'
+                end_bracket: )
+  - statement:
+      drop_table_statement:
+      - keyword: DROP
+      - keyword: TABLE
+      - table_reference:
+          identifier: '#Mercury'
+      - statement_terminator: ;

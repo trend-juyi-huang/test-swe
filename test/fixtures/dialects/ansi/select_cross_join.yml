@@ -1,0 +1,81 @@
+# YML test files are auto-generated from SQL files and should not be edited by
+# hand. To help enforce this, the "hash" field in the file must match a hash
+# computed by SQLFluff when running the tests. Please run
+# `python test/generate_parse_fixture_yml.py`  to generate them after adding or
+# altering SQL files.
+_hash: 3865821cbeda7e6ff5a554b46b42740101dfb3ce3e37f6a39e560b57a2fef238
+file:
+  statement:
+    with_compound_statement:
+      keyword: WITH
+      common_table_expression:
+        identifier: constants
+        keyword: AS
+        bracketed:
+          start_bracket: (
+          select_statement:
+            select_clause:
+              keyword: SELECT
+              select_clause_element:
+                literal: '8760'
+                alias_expression:
+                  keyword: AS
+                  identifier: hours_per_year
+          end_bracket: )
+      select_statement:
+        select_clause:
+        - keyword: SELECT
+        - select_clause_element:
+            column_reference:
+            - identifier: table1
+            - dot: .
+            - identifier: name
+        - comma: ','
+        - select_clause_element:
+            column_reference:
+            - identifier: foo
+            - dot: .
+            - identifier: name
+        - comma: ','
+        - select_clause_element:
+            expression:
+            - column_reference:
+              - identifier: foo
+              - dot: .
+              - identifier: value
+            - binary_operator: '*'
+            - column_reference:
+              - identifier: constants
+              - dot: .
+              - identifier: hours_per_year
+            alias_expression:
+              keyword: AS
+              identifier: some_value
+        from_clause:
+          keyword: FROM
+          from_expression:
+          - from_expression_element:
+              table_expression:
+                table_reference:
+                  identifier: table1
+          - join_clause:
+            - keyword: CROSS
+            - keyword: JOIN
+            - from_expression_element:
+                table_expression:
+                  table_reference:
+                    identifier: constants
+          - join_clause:
+            - keyword: JOIN
+            - from_expression_element:
+                table_expression:
+                  table_reference:
+                    identifier: table2
+                alias_expression:
+                  keyword: AS
+                  identifier: foo
+            - keyword: USING
+            - bracketed:
+                start_bracket: (
+                identifier: id
+                end_bracket: )

@@ -1,0 +1,70 @@
+# YML test files are auto-generated from SQL files and should not be edited by
+# hand. To help enforce this, the "hash" field in the file must match a hash
+# computed by SQLFluff when running the tests. Please run
+# `python test/generate_parse_fixture_yml.py`  to generate them after adding or
+# altering SQL files.
+_hash: 5f0bdf6abac2afed58fb03c667615a345bd0e9eeb99001180b1238f9008c7c57
+file:
+  statement:
+    create_function_statement:
+    - keyword: CREATE
+    - keyword: TEMP
+    - keyword: FUNCTION
+    - function_name:
+        function_name_identifier: URLDECODE
+    - base:
+        bracketed:
+          start_bracket: (
+          parameter: url
+          data_type:
+            data_type_identifier: STRING
+          end_bracket: )
+    - keyword: RETURNS
+    - data_type:
+        data_type_identifier: STRING
+    - base:
+        keyword: AS
+        bracketed:
+          start_bracket: (
+          expression:
+            bracketed:
+              start_bracket: (
+              expression:
+                select_statement:
+                  select_clause:
+                    keyword: SELECT
+                    select_clause_element:
+                      literal: '1'
+                  from_clause:
+                    keyword: FROM
+                    from_expression:
+                      from_expression_element:
+                      - table_expression:
+                          function:
+                            function_name:
+                              function_name_identifier: UNNEST
+                            bracketed:
+                              start_bracket: (
+                              expression:
+                                function:
+                                  function_name:
+                                    function_name_identifier: REGEXP_EXTRACT_ALL
+                                  bracketed:
+                                  - start_bracket: (
+                                  - expression:
+                                      column_reference:
+                                        identifier: url
+                                  - comma: ','
+                                  - expression:
+                                      literal: r"%[0-9a-fA-F]{2}|[^%]+"
+                                  - end_bracket: )
+                              end_bracket: )
+                      - alias_expression:
+                          keyword: AS
+                          identifier: y
+                      - keyword: WITH
+                      - keyword: OFFSET
+                      - keyword: AS
+                      - identifier: i
+              end_bracket: )
+          end_bracket: )

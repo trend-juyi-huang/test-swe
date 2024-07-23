@@ -1,0 +1,40 @@
+# YML test files are auto-generated from SQL files and should not be edited by
+# hand. To help enforce this, the "hash" field in the file must match a hash
+# computed by SQLFluff when running the tests. Please run
+# `python test/generate_parse_fixture_yml.py`  to generate them after adding or
+# altering SQL files.
+_hash: 734b39238b348410598ee99d1ba606e55d65287db80a84fcec76bfa952853133
+file:
+  statement:
+    select_statement:
+      select_clause:
+        keyword: SELECT
+        select_clause_element:
+          function:
+            function_name:
+            - identifier: gcpproject
+            - dot: .
+            - identifier: functions
+            - dot: .
+            - function_name_identifier: timestamp_parsing
+            bracketed:
+              start_bracket: (
+              expression:
+                column_reference:
+                - identifier: log_tbl
+                - dot: .
+                - identifier: orderdate
+              end_bracket: )
+          alias_expression:
+            keyword: AS
+            identifier: orderdate
+      from_clause:
+        keyword: FROM
+        from_expression:
+          from_expression_element:
+            table_expression:
+              table_reference:
+                identifier: '`gcp-project.data.year_2021`'
+            alias_expression:
+              keyword: AS
+              identifier: log_tbl

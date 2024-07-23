@@ -1,0 +1,40 @@
+# YML test files are auto-generated from SQL files and should not be edited by
+# hand. To help enforce this, the "hash" field in the file must match a hash
+# computed by SQLFluff when running the tests. Please run
+# `python test/generate_parse_fixture_yml.py`  to generate them after adding or
+# altering SQL files.
+_hash: 2fff389a1814b72275b8dbbbd7f5246735ac52825deec84780eb16f03e0007de
+file:
+  batch:
+  - statement:
+      alter_table_switch_statement:
+      - keyword: ALTER
+      - keyword: TABLE
+      - object_reference:
+        - identifier: '[REPORTING]'
+        - dot: .
+        - identifier: '[UN_NEW]'
+      - keyword: SWITCH
+      - keyword: to
+      - object_reference:
+        - identifier: '[REPORTING]'
+        - dot: .
+        - identifier: '[UN_BASE]'
+      - keyword: WITH
+      - bracketed:
+        - start_bracket: (
+        - keyword: TRUNCATE_TARGET
+        - comparison_operator:
+            raw_comparison_operator: '='
+        - keyword: 'ON'
+        - end_bracket: )
+      - statement_terminator: ;
+  - statement:
+      drop_table_statement:
+      - keyword: DROP
+      - keyword: TABLE
+      - table_reference:
+        - identifier: '[REPORTING]'
+        - dot: .
+        - identifier: '[UN_NEW]'
+      - statement_terminator: ;

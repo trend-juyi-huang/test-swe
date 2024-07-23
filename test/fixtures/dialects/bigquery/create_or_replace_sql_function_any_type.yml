@@ -1,0 +1,90 @@
+# YML test files are auto-generated from SQL files and should not be edited by
+# hand. To help enforce this, the "hash" field in the file must match a hash
+# computed by SQLFluff when running the tests. Please run
+# `python test/generate_parse_fixture_yml.py`  to generate them after adding or
+# altering SQL files.
+_hash: 829d94004b6f7732db54b153758beb4d10786c0c2bbdc48424961f25a8d26291
+file:
+  statement:
+    create_function_statement:
+    - keyword: CREATE
+    - binary_operator: OR
+    - keyword: REPLACE
+    - keyword: FUNCTION
+    - function_name:
+        function_name_identifier: qs
+    - base:
+        bracketed:
+        - start_bracket: (
+        - parameter: y
+        - keyword: ANY
+        - keyword: TYPE
+        - end_bracket: )
+    - base:
+        keyword: AS
+        bracketed:
+          start_bracket: (
+          expression:
+            case_expression:
+            - keyword: CASE
+            - when_clause:
+              - keyword: WHEN
+              - expression:
+                  column_reference:
+                    identifier: y
+                  comparison_operator:
+                    raw_comparison_operator: '='
+                  literal: '1'
+              - keyword: THEN
+              - expression:
+                  literal: "'low'"
+            - when_clause:
+              - keyword: WHEN
+              - expression:
+                  column_reference:
+                    identifier: y
+                  comparison_operator:
+                    raw_comparison_operator: '='
+                  literal: '2'
+              - keyword: THEN
+              - expression:
+                  literal: "'midlow'"
+            - when_clause:
+              - keyword: WHEN
+              - expression:
+                  column_reference:
+                    identifier: y
+                  comparison_operator:
+                    raw_comparison_operator: '='
+                  literal: '3'
+              - keyword: THEN
+              - expression:
+                  literal: "'mid'"
+            - when_clause:
+              - keyword: WHEN
+              - expression:
+                  column_reference:
+                    identifier: y
+                  comparison_operator:
+                    raw_comparison_operator: '='
+                  literal: '4'
+              - keyword: THEN
+              - expression:
+                  literal: "'midhigh'"
+            - when_clause:
+              - keyword: WHEN
+              - expression:
+                  column_reference:
+                    identifier: y
+                  comparison_operator:
+                    raw_comparison_operator: '='
+                  literal: '5'
+              - keyword: THEN
+              - expression:
+                  literal: "'high'"
+            - else_clause:
+                keyword: ELSE
+                expression:
+                  literal: '"unknown"'
+            - keyword: END
+          end_bracket: )

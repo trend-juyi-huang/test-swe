@@ -1,0 +1,60 @@
+# YML test files are auto-generated from SQL files and should not be edited by
+# hand. To help enforce this, the "hash" field in the file must match a hash
+# computed by SQLFluff when running the tests. Please run
+# `python test/generate_parse_fixture_yml.py`  to generate them after adding or
+# altering SQL files.
+_hash: d7a5bd084ff5ccf03e2711171e8aa5f25e4b1cdcb92d3cc95ed7ad416af627a2
+file:
+  statement:
+    select_statement:
+      select_clause:
+      - keyword: select
+      - select_clause_element:
+          column_reference:
+            identifier: $1
+          alias_expression:
+            keyword: as
+            identifier: type
+      - comma: ','
+      - select_clause_element:
+          column_reference:
+            identifier: $2
+          alias_expression:
+            keyword: as
+            identifier: price
+      from_clause:
+        keyword: from
+        from_expression:
+          from_expression_element:
+            table_expression:
+              bracketed:
+                start_bracket: (
+                values_clause:
+                - keyword: values
+                - bracketed:
+                  - start_bracket: (
+                  - expression:
+                      literal: "'toffee'"
+                  - comma: ','
+                  - expression:
+                      literal: '5'
+                  - end_bracket: )
+                - comma: ','
+                - bracketed:
+                  - start_bracket: (
+                  - expression:
+                      literal: "'starburst'"
+                  - comma: ','
+                  - expression:
+                      literal: '8'
+                  - end_bracket: )
+                - comma: ','
+                - bracketed:
+                  - start_bracket: (
+                  - expression:
+                      literal: "'flying_saucer'"
+                  - comma: ','
+                  - expression:
+                      literal: '1'
+                  - end_bracket: )
+                end_bracket: )

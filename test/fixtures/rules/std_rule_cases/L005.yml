@@ -1,0 +1,5 @@
+rule: L005
+
+test_fail_whitespace_before_comma:
+  fail_str: SELECT 1 ,4
+  fix_str: SELECT 1,4

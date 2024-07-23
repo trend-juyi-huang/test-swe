@@ -1,0 +1,30 @@
+# YML test files are auto-generated from SQL files and should not be edited by
+# hand. To help enforce this, the "hash" field in the file must match a hash
+# computed by SQLFluff when running the tests. Please run
+# `python test/generate_parse_fixture_yml.py`  to generate them after adding or
+# altering SQL files.
+_hash: c5f604e49363bf7868b7870f1d0a2d67ca32f762d3ca7d484a8df60f543bb622
+file:
+- statement:
+    alter_virtual_schema_statement:
+    - keyword: ALTER
+    - keyword: VIRTUAL
+    - keyword: SCHEMA
+    - schema_reference:
+        identifier: s2
+    - keyword: SET
+    - column_reference:
+        identifier: CONNECTION_STRING
+    - comparison_operator:
+        raw_comparison_operator: '='
+    - literal: "'jdbc:hive2://localhost:10000/default'"
+- statement_terminator: ;
+- statement:
+    alter_virtual_schema_statement:
+    - keyword: ALTER
+    - keyword: VIRTUAL
+    - keyword: SCHEMA
+    - schema_reference:
+        identifier: s2
+    - keyword: REFRESH
+- statement_terminator: ;
